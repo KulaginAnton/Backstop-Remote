@@ -136,6 +136,12 @@ let mockJson = {
 
 /* GET report listing. */
 router.get('/', function(req, res, next) {
+<<<<<<< .merge_file_a10372
+=======
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+>>>>>>> .merge_file_a09352
     res.json(mockJson);
 });
 

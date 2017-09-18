@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
         backstopDef,
         answer = '';
     console.log('---------> ' + method);
+<<<<<<< .merge_file_a10256
     // console.log(req);
     //return;
     if (method === 'reference') {
@@ -19,6 +20,15 @@ router.get('/', function(req, res, next) {
         backstopDef = backstop('test')
     }
     console.log(backstopDef);
+=======
+    if (method === 'reference') {
+        backstopDef = backstop('reference')
+    } else if (method === 'approve') {
+        backstopDef = Promise.resolve('Approve done');
+    } else if (method === 'test') {
+        backstopDef = backstop('test')
+    }
+>>>>>>> .merge_file_a06548
     backstopDef
         .then(function(val) {
             answer = 'Done ok';
