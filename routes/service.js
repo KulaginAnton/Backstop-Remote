@@ -9,16 +9,13 @@ router.get('/', function(req, res, next) {
         backstopDef,
         answer = '';
     console.log('---------> ' + method);
-    // console.log(req);
-    //return;
     if (method === 'reference') {
         backstopDef = backstop('reference')
     } else if (method === 'approve') {
-        backstopDef == backstop('approve')
+        backstopDef = Promise.resolve('Approve done');
     } else if (method === 'test') {
         backstopDef = backstop('test')
     }
-    console.log(backstopDef);
     backstopDef
         .then(function(val) {
             answer = 'Done ok';

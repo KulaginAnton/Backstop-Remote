@@ -14,8 +14,8 @@
     "onBeforeScript": "chromy/onBefore.js",
     "onReadyScript": "chromy/onReady.js",
     "scenarios": [{
-        "label": "BackstopJS Homepage",
-        "url": "https://garris.github.io/BackstopJS/"
+        "label": "Homepage",
+        "url": "http://localhost:3000/"
     }],
     "paths": {
         "bitmaps_reference": "backstop_data/bitmaps_reference",
