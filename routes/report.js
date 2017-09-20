@@ -1,13 +1,14 @@
 var express = require('express');
+var reportHelper = require('./utils/report-helper.js');
 var fs = require('fs');
 var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     //res.send('respond with a resource');
-    fs.readFile('../backstop_datahtml_report/config.js', (err, data) => {
+    return fs.readFile('backstop_data/html_report/config.js', 'utf8', (err, data) => {
         if (err) throw res.send(err);
-        res.json(data);
+        return res.json(reportHelper.makeJSON(data));
         // console.log(data);
     });
 });

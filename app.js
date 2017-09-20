@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var reports = require('./routes/reports');
+var report = require('./routes/report');
 var service = require('./routes/service');
 var cors = require('cors')
 var app = express();
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'backstop_data')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/reports', reports);
+app.use('/report', report);
 app.use('/service', service);
 
 // catch 404 and forward to error handler
