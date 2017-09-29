@@ -11,11 +11,13 @@
             "height": 768
         }
     ],
-    "onBeforeScript": "chromy/onBefore.js",
-    "onReadyScript": "chromy/onReady.js",
     "scenarios": [{
         "label": "Homepage",
-        "url": "http://localhost:3000/"
+        "url": "http://localhost:3000/",
+        "delay": null,
+        "misMatchThreshold": 0.1,
+        "onBeforeScript": "casper/onBefore.js",
+        "onReadyScript": "casper/onBefore.js"
     }],
     "paths": {
         "bitmaps_reference": "backstop_data/bitmaps_reference",
@@ -24,8 +26,8 @@
         "html_report": "backstop_data/html_report",
         "ci_report": "backstop_data/ci_report"
     },
-    "report": ["browser"],
-    "engine": "chrome",
+    "report": ["CI"],
+    "engine": "phantom",
     "engineFlags": [],
     "debug": true,
     "asyncCaptureLimit": 1,
