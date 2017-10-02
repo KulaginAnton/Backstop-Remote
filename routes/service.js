@@ -9,7 +9,6 @@ router.get('/', function(req, res, next) {
         filterVal = req.query.filter || "",
         backstopDef,
         answer = '';
-    debugger;
     console.log('---------> ' + method);
     if (method === 'reference') {
         backstopDef = backstop('reference');
@@ -21,10 +20,12 @@ router.get('/', function(req, res, next) {
     }
     backstopDef
         .then(function(val) {
+            console.log('1---------->' + val);
             answer = 'Done ok';
             res.json({ "answer": answer })
         })
         .catch(function(reason) {
+            console.log('1---------->' + reason);
             answer = 'Error ' + reason;
             res.json({ "answer": answer })
         })

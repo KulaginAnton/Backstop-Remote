@@ -12,13 +12,28 @@
         }
     ],
     "scenarios": [{
-        "label": "Homepage",
-        "url": "http://localhost:3000/",
-        "delay": null,
-        "misMatchThreshold": 0.1,
-        "onBeforeScript": "casper/onBefore.js",
-        "onReadyScript": "casper/onBefore.js"
-    }],
+            "label": "Homepage-h1",
+            "url": "http://localhost:3000/",
+            "selectors": [
+                "h1"
+            ],
+            "delay": null,
+            "misMatchThreshold": 0.1,
+            "onBeforeScript": "casper/onBefore.js",
+            "onReadyScript": "casper/onBefore.js"
+        },
+        {
+            "label": "Homepage-p",
+            "url": "http://localhost:3000/",
+            "selectors": [
+                "p"
+            ],
+            "delay": null,
+            "misMatchThreshold": 0.1,
+            "onBeforeScript": "casper/onBefore.js",
+            "onReadyScript": "casper/onBefore.js"
+        }
+    ],
     "paths": {
         "bitmaps_reference": "backstop_data/bitmaps_reference",
         "bitmaps_test": "backstop_data/bitmaps_test",
@@ -29,8 +44,8 @@
     "report": ["CI"],
     "engine": "phantom",
     "engineFlags": [],
-    "debug": true,
+    "debug": false,
     "asyncCaptureLimit": 1,
     "asyncCompareLimit": 1,
-    "debugWindow": true
+    "debugWindow": false
 }
