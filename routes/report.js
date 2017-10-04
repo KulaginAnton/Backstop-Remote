@@ -6,7 +6,7 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     return res.json(reportHelper.makeJSON(
-        configHelper.getConfiguration('backstop_data/html_report/config.js')
+        configHelper.getConfiguration('test-result.js')
     ))
 });
 

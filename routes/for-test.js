@@ -30,20 +30,26 @@ var cusomTestReport = function() {
 
 var filterTestPairs = function(testPairs, filter) {
     return testPairs.filter(function(value) {
+        console.log('filter 1 ->' + value.pair.label);
+        console.log('filter 1 ->' + filter.label);
+        console.log('filter 2 ->' + value.pair.reference);
+        console.log('filter 2 ->' + filter.reference);
         return value.pair.label == filter.label && value.pair.reference == filter.reference;
     })
 }
 
 var updateCustomReport = function(tests, latestRes) {
-    return tests.forEach(function(currentValue, index, array) {
+    tests.forEach(function(currentValue, index, array) {
         let updatedTest = filterTestPairs(latestRes.tests, {
             label: currentValue.pair.label,
             reference: currentValue.pair.reference
         })
+        console.log(updatedTest);
         if (updatedTest.length) {
-            array[index] = updatedTest;
+            array[index] = updatedTest[0];
         }
     })
+    return tests;
 }
 
 /* GET users listing. */
@@ -56,6 +62,8 @@ router.get('/', function(req, res, next) {
         var tests = getAllApplicableTest(customReport);
         var updatedTestRes = updateCustomReport(tests, latestRes);
         customReport.tests = updatedTestRes;
+        console.log('12----------|>' + tests);
+        console.log('21----------|>' + updatedTestRes);
         reportHelper.saveReport(
             reportHelper.makeJSONP(JSON.stringify(customReport, null, ' '))
         );
