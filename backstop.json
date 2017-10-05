@@ -18,9 +18,7 @@
                 "h1"
             ],
             "delay": null,
-            "misMatchThreshold": 0.1,
-            "onBeforeScript": "casper/onBefore.js",
-            "onReadyScript": "casper/onBefore.js"
+            "misMatchThreshold": 0.1
         },
         {
             "label": "Homepage-p",
@@ -29,9 +27,16 @@
                 "p"
             ],
             "delay": null,
-            "misMatchThreshold": 0.1,
-            "onBeforeScript": "casper/onBefore.js",
-            "onReadyScript": "casper/onBefore.js"
+            "misMatchThreshold": 0.1
+        },
+        {
+            "label": "Homepage-div",
+            "url": "http://localhost:3000/",
+            "selectors": [
+                "div"
+            ],
+            "delay": null,
+            "misMatchThreshold": 0.1
         }
     ],
     "paths": {

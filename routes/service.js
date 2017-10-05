@@ -3,7 +3,7 @@ var backstop = require('backstopjs');
 var router = express.Router();
 var reportHelper = require('./utils/report-helper.js');
 
-router.get('/', function (req, res, next) {
+router.get('/', function(req, res, next) {
     let method = req.query.method || '',
         filterVal = req.query.filter || "",
         backstopDef,
@@ -17,16 +17,15 @@ router.get('/', function (req, res, next) {
     } else if (method === 'test') {
         backstopDef = backstop('test', {
             filter: filterVal,
-            config: 'backstop.json'
         })
     }
     backstopDef
-        .then(function (val) {
+        .then(function(val) {
             reportHelper.updateResult(filterVal)
             answer = 'Done ok';
             res.json({ "answer": answer })
         })
-        .catch(function (reason) {
+        .catch(function(reason) {
             reportHelper.updateResult(filterVal);
             answer = 'Error ' + reason;
             res.json({ "answer": answer })
