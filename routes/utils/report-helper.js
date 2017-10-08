@@ -17,7 +17,7 @@ Report.prototype.makeJSON = function (str) {
 }
 //return str to JSONP with 'report function'
 Report.prototype.makeJSONP = function (str) {
-    return str.test(/^report/) ? str : 'report(' + str + ');';
+    return /^report/.test(str) ? str : 'report(' + str + ');';
 }
 //return latest test result in JSON format */
 Report.prototype.getResultTest = function (path) {
