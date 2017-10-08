@@ -95,9 +95,7 @@ Report.prototype.startUpdate = function () {
         log('----------|>' + updatedTestRes);
         this.saveReport(customReport);
     } else {
-        this.saveReport(
-            getResultTest()
-        );
+        this.copyResult();
     }
 }
 Report.prototype.updateResult = function (filter) {
