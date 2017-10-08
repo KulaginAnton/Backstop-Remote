@@ -11,21 +11,22 @@ var log = function (msg) {
     IS_DEBUG && console.log(msg);
 }
 //TODO add checking for type of str
-
 Report.prototype.makeJSON = function (str) {
     var report = str.replace(/^report\(/gm, '').replace(/\);$/gm, '');
     return JSON.parse(report);
 }
-//return str to JSONP
+//return str to JSONP with 'report function'
 Report.prototype.makeJSONP = function (str) {
-    var JSONP = 'report(' + str + ');';
-    return JSONP;
+    return str.test(/^report/) ? str : 'report(' + str + ');';
 }
 //return latest test result in JSON format */
 Report.prototype.getResultTest = function (path) {
-    var path = path || REPORT_PATH;
-    // return fs.readFileSync(path, 'utf8');
-    return this.makeJSON(fs.readFileSync(path, 'utf8'));
+    var path = path || REPORT_PATH,
+        response = 'report({});';
+    if (fs.existsSync(path)) {
+        response = fs.readFileSync(path, 'utf8')
+    }
+    return this.makeJSON(response);
 }
 var isReportExist = function () {
     return fs.existsSync(REPORT_PATH);
@@ -91,7 +92,7 @@ Report.prototype.startUpdate = function () {
         log('applicable=' + testList)
         var updatedTestRes = this.updateCustomReport(testList, latestResult);
         customReport.tests = updatedTestRes;
-        log('21----------|>' + updatedTestRes);
+        log('----------|>' + updatedTestRes);
         this.saveReport(customReport);
     } else {
         this.saveReport(
