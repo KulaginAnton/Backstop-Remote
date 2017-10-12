@@ -12,42 +12,54 @@
         }
     ],
     "scenarios": [{
-        "label": "Accordion-closed",
-        "url": "http://sxa825/showcase/components/composites/accordion",
-        "selectors": [
-            ".full-wrapper"
-        ],
-        "delay": null,
-        "misMatchThreshold": 0.1
-    }, {
-        "label": "Accordion-opened",
-        "url": "http://sxa825/showcase/components/composites/accordion",
-        "selectors": [
-            ".full-wrapper"
-        ],
-        "delay": null,
-        "misMatchThreshold": 0.1,
-        "onReadyScript": "chromy/clickAndHoverHelper.js",
-        "clickSelector": ".full-wrapper .item\\:first-child .field-heading"
-    }, {
-        "label": "Flip",
-        "url": "http://sxa825/showcase/components/composites/tabs",
-        "selectors": [
-            ".flip"
-        ],
-        "delay": null,
-        "misMatchThreshold": 0.1
-    }, {
-        "label": "Flip Click",
-        "url": "http://sxa825/showcase/components/composites/tabs",
-        "selectors": [
-            ".flip"
-        ],
-        "onReadyScript": "chromy/clickAndHoverHelper.js",
-        "clickSelector": ".flip",
-        "delay": null,
-        "misMatchThreshold": 0.1
-    }],
+            "label": "Accordion-closed",
+            "url": "http://sxa825/showcase/components/composites/accordion",
+            "selectors": [
+                ".full-wrapper"
+            ],
+            "delay": null,
+            "misMatchThreshold": 0.1
+        }, {
+            "label": "Accordion-opened",
+            "url": "http://sxa825/showcase/components/composites/accordion",
+            "selectors": [
+                ".full-wrapper"
+            ],
+            "delay": null,
+            "misMatchThreshold": 0.1,
+            "onReadyScript": "chromy/clickAndHoverHelper.js",
+            "clickSelector": ".full-wrapper .item\\:first-child .field-heading"
+        }, {
+            "label": "Flip",
+            "url": "http://sxa825/showcase/components/composites/tabs",
+            "selectors": [
+                ".flip"
+            ],
+            "delay": null,
+            "misMatchThreshold": 0.1
+        },
+        {
+            "label": "Tabs_on_left",
+            "url": "http://sxa825/showcase/components/composites/tabs",
+            "selectors": [
+                ".row .tabs-vertical\\:nth-child(4)"
+            ],
+            "onReadyScript": "chromy/clickAndHoverHelper.js",
+            "delay": null,
+            "clickSelector": ".row .tabs-vertical\\:nth-child(4) .tabs-heading li\\:last-child",
+            "misMatchThreshold": 0.1
+        }, {
+            "label": "File_List_page",
+            "url": "http://sxa825/showcase/components/media/file-list",
+            "selectors": [
+                "document"
+            ],
+            "delay": null,
+            "misMatchThreshold": 0.1
+        }
+
+
+    ],
     "paths": {
         "bitmaps_reference": "backstop_data/bitmaps_reference",
         "bitmaps_test": "backstop_data/bitmaps_test",

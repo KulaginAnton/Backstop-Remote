@@ -6,7 +6,7 @@
         "start": "node ./bin/www"
     },
     "dependencies": {
-        "backstopjs": "^3.0.26",
+        "backstopjs": "git+https://github.com/anton-kulagin/BackstopJS.git#test-folder-name",
         "body-parser": "~1.17.1",
         "cookie-parser": "~1.4.3",
         "cors": "^2.8.4",
