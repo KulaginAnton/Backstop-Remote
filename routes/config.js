@@ -4,18 +4,40 @@ var router = express.Router();
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     var config,
         status = 200;
     try {
-        console.log('try')
         config = configHelper.getConfiguration();
     } catch (e) {
-        console.log('vatch')
         config = { 'error': e.message }
         status = 208
     } finally {
-        console.log('finally')
+        return res
+            .status(status)
+            .json(JSON.parse(config));
+    }
+});
+
+
+
+/* POST users listing. */
+router.post('/', function (req, res, next) {
+    let scenarios = req.body || [];
+    var config,
+        status = 200;
+    try {
+        if (scenarios.lenght == 0) {
+            throw new Error('Empty scenarios for updating')
+        }
+        console.log(scenarios)
+        configHelper.updateScenarios(scenarios);
+        config = configHelper.getConfiguration();
+        console.log('---------->2' + config)
+    } catch (e) {
+        config = { 'error': e.message }
+        status = 208
+    } finally {
         return res
             .status(status)
             .json(JSON.parse(config));

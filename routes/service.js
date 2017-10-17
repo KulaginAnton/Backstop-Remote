@@ -2,10 +2,10 @@ var express = require('express');
 var backstop = require('backstopjs');
 var router = express.Router();
 var reportHelper = require('./utils/report-helper.js');
-var cmd = require('node-cmd');
-var Promise = require('bluebird');
+// var cmd = require('node-cmd');
+// var Promise = require('bluebird');
 
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     let method = req.query.method || '',
         filterVal = req.query.filter || "",
         backstopDef,
@@ -48,14 +48,14 @@ router.get('/', function(req, res, next) {
         })
     }
     backstopDef
-        .then(function(val) {
+        .then(function (val) {
             if (method !== 'approve') {
                 reportHelper.updateResult(filterVal)
             }
             answer = 'Done ok';
             res.json({ "answer": answer })
         })
-        .catch(function(reason) {
+        .catch(function (reason) {
             if (method !== 'approve') {
                 reportHelper.updateResult(filterVal)
             }
