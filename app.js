@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var report = require('./routes/report');
 var service = require('./routes/service');
 var config = require('./routes/config');
+var download = require('./routes/download');
 var cors = require('cors')
 var app = express();
 
@@ -30,6 +31,7 @@ app.use('/', index);
 app.use('/report', report);
 app.use('/service', service);
 app.use('/config', config);
+app.use('/download', download);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
