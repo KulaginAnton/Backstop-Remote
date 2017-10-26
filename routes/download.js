@@ -1,7 +1,5 @@
 var express = require('express');
 var router = express.Router();
-// var cmd = require('node-cmd');
-// var Promise = require('bluebird');
 
 router.get('/', function(req, res, next) {
     return res.download('./backstop.json', 'backstop.json', function(err) {

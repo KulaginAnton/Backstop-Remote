@@ -1,6 +1,8 @@
 var fs = require('fs');
+var util = require('util');
+
 var Configuration = function() {};
-//TODO add checking for type of str
+
 var CONF_PATH = "backstop.json";
 
 var _typeof = function(elem) {
@@ -9,9 +11,7 @@ var _typeof = function(elem) {
 
 var makeSelectorsArray = function(selectors) {
     var res = selectors;
-    console.log(_typeof(selectors))
     if (_typeof(selectors) !== "[object Array]") {
-        console.log(selectors)
         res = selectors.split(',');
     }
     return res;
@@ -38,10 +38,7 @@ Configuration.prototype.saveConfiguration = function(configuration, PATH_TO_FILE
 Configuration.prototype.updateScenarios = function(scenarios) {
     var path = path || CONF_PATH;
     var newConfig = JSON.parse(this.getConfiguration());
-
-    console.log(console.log('------>1' + newConfig));
     newConfig.scenarios = updateScenariosType(scenarios);
-    console.log("---------->2" + newConfig.scenarios)
     this.saveConfiguration(newConfig);
 }
 

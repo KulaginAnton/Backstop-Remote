@@ -5,7 +5,7 @@ var router = express.Router();
 
 
 var CONF_PATH = 'test-result.js';
-/* GET users listing. */
+/* GET Report Generated as Additional*/
 router.get('/', function(req, res, next) {
     var config,
         status = 200;
