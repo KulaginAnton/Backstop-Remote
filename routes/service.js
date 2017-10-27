@@ -6,29 +6,27 @@ var reportHelper = require('./utils/report-helper.js');
 router.get('/', function(req, res, next) {
     let method = req.query.method || '',
         filterVal = req.query.filter || "",
-        backstopDef,
-        answer = '';
+        backstopDef;
 
-    if (method === 'reference') {
-        backstopDef = backstop('reference');
-    } else if (method === 'approve') {
-        backstop('approve', { filter: filterVal });
-        backstopDef = Promise.resolve('Approve done');
-    } else if (method === 'test') {
-        backstopDef = backstop('test', {
-            filter: filterVal,
-        })
+    backstopDef = backstop(method, {
+        filter: filterVal,
+    });
+    if (method == 'approve') {
+        backstopDef = Promise.resolve('done');
     }
+
     backstopDef
         .then(function(val) {
-            reportHelper.updateResult(filterVal)
-            answer = 'Done ok';
-            res.json({ "answer": answer })
+            if (method !== 'approve') {
+                reportHelper.updateResult(filterVal)
+            }
+            res.json({ "answer": 'Done ok' })
         })
         .catch(function(reason) {
-            reportHelper.updateResult(filterVal);
-            answer = 'Error ' + reason;
-            res.json({ "answer": answer })
+            if (method !== 'approve') {
+                reportHelper.updateResult(filterVal)
+            }
+            res.json({ "answer": 'Error ' + reason })
         })
 
 
