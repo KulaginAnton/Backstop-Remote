@@ -2,7 +2,6 @@ module.exports = function(chromy, scenario) {
     var hoverSelector = scenario.hoverSelector;
     var clickSelector = scenario.clickSelector;
     var postInteractionWait = scenario.postInteractionWait; // selector [str] | ms [int]
-
     if (hoverSelector) {
         chromy
             .wait(hoverSelector)
@@ -13,20 +12,12 @@ module.exports = function(chromy, scenario) {
     }
 
     if (clickSelector) {
-        // function outerFunc() {
-        //     return (function(sel) {
-        //         return sel;
-        //     })(clickSelector);
-        // }
-        // chromy
-        //     .wait(clickSelector)
-        //     .defineFunction(outerFunc)
-        //     .evaluate(() => {
-        //         console.log('---------->test1=' + outerFunc());
-        //         return document.querySelector(clickSelector).click()
-        //     })
         chromy
             .wait(clickSelector)
             .click(clickSelector);
+    }
+
+    if (postInteractionWait) {
+        chromy.wait(postInteractionWait);
     }
 };
