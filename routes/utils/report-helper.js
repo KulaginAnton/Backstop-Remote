@@ -16,6 +16,7 @@ var log = function(msg) {
 //TODO add checking for type of str
 Report.prototype.makeJSON = function(str) {
         var report = str.replace(/^report\(/gm, '').replace(/\);$/gm, '');
+        //report=report.length?report:"{}";
         return JSON.parse(report);
     }
     //return str to JSONP with 'report function'
