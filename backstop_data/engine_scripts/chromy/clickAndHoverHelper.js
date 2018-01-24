@@ -8,16 +8,24 @@ module.exports = function(chromy, scenario) {
             .rect(hoverSelector)
             .result(function(rect) {
                 chromy.mouseMoved(rect.left, rect.top);
+                if (postInteractionWait) {
+                    chromy.wait(parseInt(postInteractionWait));
+                }
             });
+           
     }
 
     if (clickSelector) {
-        chromy
-            .wait(clickSelector)
-            .click(clickSelector);
+        var selectors = clickSelector.split(",")
+		selectors.forEach(element => {
+            chromy
+            .wait(element)
+            .click(element)
+            if (postInteractionWait) {
+                chromy.wait(parseInt(postInteractionWait));
+            }
+        });
     }
 
-    if (postInteractionWait) {
-        chromy.wait(postInteractionWait);
-    }
+    
 };

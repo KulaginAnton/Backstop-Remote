@@ -12,5 +12,6 @@ router.get('/', function (req, res, next) {
 /* POST */
 router.post('/reset-state', function (req, res, next) {
     processState.setState(false);
+    return res.json({ 'state': processState.getState() });
 });
 module.exports = router;

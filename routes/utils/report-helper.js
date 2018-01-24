@@ -100,6 +100,9 @@ Report.prototype.isTestRunnedBefore = function(testLabel) {
             return el.label
         });
     log(customReport)
+    if(typeof customReport.tests=="undefined"){
+        return false;
+    }
     return customReport.tests.some(function(element, index, array) {
         return element.pair.label.indexOf(testLabel) > -1
     })
@@ -111,7 +114,12 @@ Report.prototype.startUpdate = function(filter) {
             customReport = this.getResultTest();
         if (!this.isTestRunnedBefore(filter)) {
             log('latestResult-->' + latestResult);
-            customReport.tests = customReport.tests.concat(latestResult.tests);
+            if (customReport.tests){
+                customReport.tests = customReport.tests.concat(latestResult.tests);
+            }else {
+                customReport.tests = latestResult.tests;
+            }
+           
         } else {
             log('customReport-->' + customReport);
             var testList = this.getAllApplicableTest(customReport);

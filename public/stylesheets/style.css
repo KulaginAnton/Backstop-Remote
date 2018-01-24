@@ -4,5 +4,8 @@ body {
     /* background: red; */
 }
 a {
-    color: #00B7FF;
+    color: red;
+}
+a:hover {
+    color: green;
 }
