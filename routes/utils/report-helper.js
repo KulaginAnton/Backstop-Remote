@@ -16,6 +16,7 @@ var log = function(msg) {
 //TODO add checking for type of str
 Report.prototype.makeJSON = function(str) {
         var report = str.replace(/^report\(/gm, '').replace(/\);$/gm, '');
+        //report=report.length?report:"{}";
         return JSON.parse(report);
     }
     //return str to JSONP with 'report function'
@@ -99,6 +100,9 @@ Report.prototype.isTestRunnedBefore = function(testLabel) {
             return el.label
         });
     log(customReport)
+    if(typeof customReport.tests=="undefined"){
+        return false;
+    }
     return customReport.tests.some(function(element, index, array) {
         return element.pair.label.indexOf(testLabel) > -1
     })
@@ -110,7 +114,12 @@ Report.prototype.startUpdate = function(filter) {
             customReport = this.getResultTest();
         if (!this.isTestRunnedBefore(filter)) {
             log('latestResult-->' + latestResult);
-            customReport.tests = customReport.tests.concat(latestResult.tests);
+            if (customReport.tests){
+                customReport.tests = customReport.tests.concat(latestResult.tests);
+            }else {
+                customReport.tests = latestResult.tests;
+            }
+           
         } else {
             log('customReport-->' + customReport);
             var testList = this.getAllApplicableTest(customReport);

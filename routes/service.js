@@ -1,34 +1,39 @@
+//import { setTimeout } from 'core-js/library/web/timers';
+
 var express = require('express');
 var backstop = require('backstopjs');
 var router = express.Router();
 var reportHelper = require('./utils/report-helper.js');
+var processState = require('./utils/process-state.js');
 
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) { 
+    if (processState.getState()) {
+        return res.json({ "answer": 'Backstop already in use' })
+    }
     let method = req.query.method || '',
         filterVal = req.query.filter || "",
         backstopDef;
-
+    processState.setState(true);
     backstopDef = backstop(method, {
         filter: filterVal,
     });
     if (method == 'approve') {
         backstopDef = Promise.resolve('done');
     }
-
     backstopDef
-        .then(function(val) {
+        .then(function (val) {
             if (method !== 'approve') {
                 reportHelper.updateResult(filterVal)
             }
-            res.json({ "answer": 'Done ok' })
+            processState.setState(false)
         })
-        .catch(function(reason) {
+        .catch(function (reason) {
             if (method !== 'approve') {
                 reportHelper.updateResult(filterVal)
             }
-            res.json({ "answer": 'Error ' + reason })
+            processState.setState(false)
         })
-
+    return res.json({ "answer": 'Tests are started' })
 
 });
 

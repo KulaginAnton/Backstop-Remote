@@ -1,8 +1,9 @@
 var errorHelper = require('./utils/error-helper');
 var uuidv4 = require('uuid/v4');
 var moment = require('moment');
-module.exports = function (chromy, scenario, vp) {
+module.exports = function (chromy, scenario, vp, isReference, chromyStatic) {
     // require('./loadCookies')(chromy, scenario);
+
     chromy.on('Runtime.exceptionThrown', (params) => {
         errorHelper.push(
             {

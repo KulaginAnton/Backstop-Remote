@@ -14,11 +14,12 @@ var download = require('./routes/download');
 var cors = require('cors')
 var app = express();
 
+var processStateRoute = require('./routes/process-state');
+
 app.use(cors())
-    // view engine setup
+// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -28,28 +29,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'backstop_data')));
 
+
+app.use('/api/report', report);
+app.use('/api/service', service);
+app.use('/api/config', config);
+app.use('/api/download', download);
+app.use('/api/errors', errors);
+app.use('/api/process-state', processStateRoute);
 app.use('/', index);
-app.use('/report', report);
-app.use('/service', service);
-app.use('/config', config);
-app.use('/download', download);
-app.use('/errors', errors);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-// error handler
-app.use(function(err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
-});
 
 module.exports = app;
