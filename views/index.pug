@@ -4,8 +4,11 @@ block content
   h1 #{title} test
   p Welcome  wadfadwda  #{title}
   <div>Test div</div>
+  <a href="#" class="test-link">Test link</a>
   block scripts
       script(type='text/javascript').  
-        var myVar = "Hello Var";
-        var b = myVar.b.c;
-        console.error(myVar)
+        //var myVar = "Hello Var";
+        //var b = myVar.b.c;
+        console.log(window._backstopTools)
+        debugger;
+        console.log('backstopjs_ready')

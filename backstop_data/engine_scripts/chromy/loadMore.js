@@ -19,6 +19,7 @@ module.exports = function(chromy, scenario) {
 		selectors.forEach(element => {
             chromy
             .wait(element)
+			.wait(1500)
 			.evaluate((clickSelector) => {
                 if (jQuery){
                     let _$ = jQuery,
