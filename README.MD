@@ -1,7 +1,7 @@
 
 # Backstop UI
 
-BackstopUI is sugar for [BackstopJS](https://github.com/garris/BackstopJS). The main idea of  project is providing list of examples, how to do different stuff and make process of managing test more visual.
+BackstopUI is sugar for [BackstopJS](https://github.com/garris/BackstopJS). The main idea of project is providing a list of examples, how to do different stuff and make the process of managing test more visual.
 
 
 ## Getting Started
@@ -16,12 +16,13 @@ BackstopUI is sugar for [BackstopJS](https://github.com/garris/BackstopJS). The 
 1. Nodejs 8.9.1 or higher
 2. Npm 5.5.1 or higher
 3.[Chrome 62 or greater is required](https://www.google.com/chrome/browser/desktop/index.html)
+4. Read [BackstopJS readme](https://github.com/garris/BackstopJS)
 
 ## API <br>
 - ```/api/report``` - [GET] return latest tests result in JSON format.
 - ```/api/service?method=&filter=``` - [GET] url for processing backstop tasks
-    - ```method=``` - Method parameter just say to backstop which one method you want to start.(```test``` or ```approve```)
-    - ```filter=``` - Filter parameter if for just run scenarios matching your scenario label. (will run all if empty)
+    - ```method=``` - Method parameter just say backstop which one method you want to start.(```test``` or ```approve```)
+    - ```filter=``` - Filter parameter if for just running scenarios matching your scenario label. (will run all if empty)
 - ```/api/config``` - 
     - [GET] return test list in JSON format.
     - [POST] update list of tests.
@@ -38,12 +39,12 @@ BackstopUI is sugar for [BackstopJS](https://github.com/garris/BackstopJS). The 
 ## UI
 ### Report Tab
 ![Report Tab](assets/report_tab.png "Report Tab")
-This is page with all test result, which we already have. From this page whole sets of test can be starter, or approved by `Start Test` and `Approve all` buttons. Under each failed test also placed two additional buttons. One for restart just this one test, and second for approving only thi test.
+This is the page with all test result, which we already have. From this page whole sets of test can be started, or approved by `Start Test` and `Approve all` buttons. Under each failed test also placed two additional buttons. One for restart just this one test, and second for approving only this test.
 
 ### Test List Tab
 ![Test List Tab](assets/test_list_tab.png "Test List Tab")
-This is page with all tests. This page provide possibility add new scenario, download backstop.json file (in can be helpfull when there is no access to hard drive) and manage tests. In option row for each scenario there is 4 possibility action. 
-1. Option - will open test on new page and provide possibility to configure test.
+This is the page with all tests. This page provide possibility add new scenario, download backstop.json file (it can be helpful when there is no access to hard drive) and manage tests. In option row for each scenario there is 4 possibility action. 
+1. Option - will open test on the new page and provide possibility to configure test.
 2. Remove
 3. Copy
 4. Start test
