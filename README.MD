@@ -1,7 +1,7 @@
 
 # Backstop UI
 
-BackstopUI is sugare for [BackstopJS](https://github.com/garris/BackstopJS). The main idea of  project is providing list of examples, how to do different stuff and make process of managing test more visual.
+BackstopUI is sugar for [BackstopJS](https://github.com/garris/BackstopJS). The main idea of  project is providing list of examples, how to do different stuff and make process of managing test more visual.
 
 
 ## Getting Started
