@@ -1,38 +1,20 @@
 [
       {
-            "id": "84835a23-56b4-47f9-94ea-33c768f56585",
-            "url": "http://sxa90/showcase",
-            "testName": "Test1-copy-desktop",
+            "id": "e81eb228-1bef-4724-9d86-4b42590e5d34",
+            "url": "https://www.wikipedia.org",
+            "testName": "Wiki-Home",
             "vp": "desktop",
-            "errorMsg": "TypeError: Cannot read property 'd' of undefined\n    at Object.t.init (http://sxa90/showcase/-/media/Themes/Showcase/Showcase2/scripts/optimized-min.js?t=20171204T122432Z:1:6236)\n    at HTMLDocument.<anonymous> (http://sxa90/showcase/-/media/Base-Themes/XA-API/Scripts/optimized-min.js?t=20171204T122431Z:1:384)\n    at c (http://sxa90/showcase/-/media/Base-Themes/Core-Libraries/scripts/optimized-min.js?t=20171204T122431Z:3:38565)\n    at Object.fireWith [as resolveWith] (http://sxa90/showcase/-/media/Base-Themes/Core-Libraries/scripts/optimized-min.js?t=20171204T122431Z:3:39327)\n    at Function.ready (http://sxa90/showcase/-/media/Base-Themes/Core-Libraries/scripts/optimized-min.js?t=20171204T122431Z:3:41115)\n    at HTMLDocument.yt (http://sxa90/showcase/-/media/Base-Themes/Core-Libraries/scripts/optimized-min.js?t=20171204T122431Z:3:947)",
-            "date": "2017-12-04:17-07-55",
+            "errorMsg": "TypeError: console.lof is not a function\n    at Object.t.init (https://www.wikipedia.org/scripts/demo.js)\n    at HTMLDocument.<anonymous> (https://www.wikipedia.org/Scripts/demo.js)\n",
+            "date": "2017-12-06:15-50-16",
             "status": true
       },
       {
-            "id": "a1fea28d-16eb-4cdf-960d-e55a8230eaf8",
-            "url": "http://sxa90/showcase",
-            "testName": "Test1-copy-tablet",
+            "id": "8afbeb1d-fdb5-4e31-9a4b-063c9c95e637",
+            "url": "https://www.wikipedia.org",
+            "testName": "Wiki-Footer",
             "vp": "tablet",
-            "errorMsg": "TypeError: Cannot read property 'd' of undefined\n    at Object.t.init (http://sxa90/showcase/-/media/Themes/Showcase/Showcase2/scripts/optimized-min.js?t=20171204T122432Z:1:6236)\n    at HTMLDocument.<anonymous> (http://sxa90/showcase/-/media/Base-Themes/XA-API/Scripts/optimized-min.js?t=20171204T122431Z:1:384)\n    at c (http://sxa90/showcase/-/media/Base-Themes/Core-Libraries/scripts/optimized-min.js?t=20171204T122431Z:3:38565)\n    at Object.fireWith [as resolveWith] (http://sxa90/showcase/-/media/Base-Themes/Core-Libraries/scripts/optimized-min.js?t=20171204T122431Z:3:39327)\n    at Function.ready (http://sxa90/showcase/-/media/Base-Themes/Core-Libraries/scripts/optimized-min.js?t=20171204T122431Z:3:41115)\n    at HTMLDocument.yt (http://sxa90/showcase/-/media/Base-Themes/Core-Libraries/scripts/optimized-min.js?t=20171204T122431Z:3:947)",
-            "date": "2017-12-04:17-07-57",
-            "status": true
-      },
-      {
-            "id": "2cace02f-a351-497e-97b8-f8b7e02bdd1b",
-            "url": "http://sxa90/showcase",
-            "testName": "Network-Test1-copy-desktop",
-            "vp": "desktop",
-            "errorMsg": "[404] http://sxa90/favicon.ico",
-            "date": "2017-12-04:17-07-58",
-            "status": true
-      },
-      {
-            "id": "b76d38a5-aef3-4f37-9cdb-307044da8ce0",
-            "url": "http://sxa90/showcase",
-            "testName": "Network-Test1-copy-tablet",
-            "vp": "tablet",
-            "errorMsg": "[404] http://sxa90/favicon.ico",
-            "date": "2017-12-04:17-08-03",
+            "errorMsg": "TypeError: console.lof is not a function\n    at Object.t.init (https://www.wikipedia.org/Scripts/demo.js)\n    at c (https://www.wikipedia.org/scripts/demo.js)\n",
+            "date": "2017-12-06:15-52-26",
             "status": true
       }
 ]
