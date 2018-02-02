@@ -36,15 +36,19 @@ BackstopUI is sugare for [BackstopJS](https://github.com/garris/BackstopJS). The
 
 
 ## UI
+### Report Tab
 ![Report Tab](assets/report_tab.png "Report Tab")
 This is page with all test result, which we already have. From this page whole sets of test can be starter, or approved by `Start Test` and `Approve all` buttons. Under each failed test also placed two additional buttons. One for restart just this one test, and second for approving only thi test.
 
+### Test List Tab
 ![Test List Tab](assets/test_list_tab.png "Test List Tab")
 This is page with all tests. This page provide possibility add new scenario, download backstop.json file (in can be helpfull when there is no access to hard drive) and manage tests. In option row for each scenario there is 4 possibility action. 
 1. Option - will open test on new page and provide possibility to configure test.
 2. Remove
 3. Copy
 4. Start test
+
+### Error List Tab
 ![Error List Tab](assets/error_list_tab.png "Error List Tab")
 On this page will be stored all console errors which will be captured by backstopjs.
 Be aware, on this page error will appear only if logic for capturing them will be added in onBefore script.
