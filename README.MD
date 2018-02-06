@@ -15,7 +15,7 @@ BackstopUI is sugar for [BackstopJS](https://github.com/garris/BackstopJS). The 
 ### Prerequisites
 1. Nodejs 8.9.1 or higher
 2. Npm 5.5.1 or higher
-3.[Chrome 62 or greater is required](https://www.google.com/chrome/browser/desktop/index.html)
+3. [Chrome 62 or greater is required](https://www.google.com/chrome/browser/desktop/index.html)
 4. Read [BackstopJS readme](https://github.com/garris/BackstopJS)
 
 ## API <br>
