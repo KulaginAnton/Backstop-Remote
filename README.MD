@@ -1,7 +1,7 @@
 
-# Backstop UI
+# Backstop Remote
 
-BackstopUI is sugar for [BackstopJS](https://github.com/garris/BackstopJS). The main idea of project is providing a list of examples, how to do different stuff and make the process of managing test more visual.
+Backstop Remote is sugar for [BackstopJS](https://github.com/garris/BackstopJS). The main idea of project is providing a list of examples, how to do different stuff and make the process of managing test more visual.
 
 
 ## Getting Started
@@ -58,9 +58,9 @@ Be aware, on this page error will appear only if logic for capturing them will b
 ## Authors
 
 * **Garris Shipon** - *BackstopJS author* - [BackstopJS](https://github.com/garris/BackstopJS)
-* **Anton Kulagin** - *BackstopUI author* - [BackstopUI](https://github.com/anton-kulagin/service-server)
+* **Anton Kulagin** - *Backstop Remote author* - [Backstop Remote](https://github.com/anton-kulagin/service-server)
 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details
