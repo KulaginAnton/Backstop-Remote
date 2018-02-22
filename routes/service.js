@@ -5,6 +5,7 @@ var backstop = require('backstopjs');
 var router = express.Router();
 var reportHelper = require('./utils/report-helper.js');
 var processState = require('./utils/process-state.js');
+var configHelper = require('./utils/configuration-helper.js');
 
 router.get('/', function (req, res, next) { 
     if (processState.getState()) {
@@ -13,9 +14,11 @@ router.get('/', function (req, res, next) {
     let method = req.query.method || '',
         filterVal = req.query.filter || "",
         backstopDef;
+
     processState.setState(true);
     backstopDef = backstop(method, {
         filter: filterVal,
+        config:configHelper.getFilteredConfig()
     });
     if (method == 'approve') {
         backstopDef = Promise.resolve('done');

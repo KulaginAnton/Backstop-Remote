@@ -1,2 +1,5 @@
 backstop_data/
 node_modules/
+/test-result.js
+/package-lock.json
+/backstop.json

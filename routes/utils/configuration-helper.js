@@ -23,6 +23,11 @@ var updateScenariosType = function(scenarios) {
     }, this);
     return scenarios;
 }
+var filterActiveTest = function(testList){
+    return testList.filter((el,pos)=>{
+        return el.status
+    })
+}
 
 Configuration.prototype.getConfiguration = function(path) {
     var path = path || CONF_PATH;
@@ -40,6 +45,19 @@ Configuration.prototype.updateScenarios = function(scenarios) {
     var newConfig = JSON.parse(this.getConfiguration());
     newConfig.scenarios = updateScenariosType(scenarios);
     this.saveConfiguration(newConfig);
+}
+Configuration.prototype.updateViewPort = function(viewPort) {
+    var path = path || CONF_PATH;
+    var newConfig = JSON.parse(this.getConfiguration());
+    newConfig.viewports = viewPort;
+    this.saveConfiguration(newConfig);
+}
+
+Configuration.prototype.getFilteredConfig = function() {
+    var path = path || CONF_PATH;
+    var config = JSON.parse(this.getConfiguration());
+    config.scenarios = filterActiveTest(config.scenarios)
+    return config;
 }
 
 module.exports = new Configuration();
