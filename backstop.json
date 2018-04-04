@@ -28,7 +28,9 @@
                   "clickSelector": "",
                   "postInteractionWait": "",
                   "selectorExpansion": "",
-                  "requireSameDimensions": ""
+                  "requireSameDimensions": "",
+                  "comment": "",
+                  "status": true
             },
             {
                   "label": "Wiki-Home-Footer",
@@ -50,7 +52,9 @@
                   "clickSelector": "",
                   "postInteractionWait": "",
                   "selectorExpansion": "",
-                  "requireSameDimensions": ""
+                  "requireSameDimensions": "",
+                  "comment": "",
+                  "status": true
             },
             {
                   "label": "Wiki-Home-Input",
@@ -72,7 +76,9 @@
                   "clickSelector": "#searchInput{:}Developer,#search-form button",
                   "postInteractionWait": "",
                   "selectorExpansion": "",
-                  "requireSameDimensions": ""
+                  "requireSameDimensions": "",
+                  "comment": "",
+                  "status": true
             }
       ],
       "paths": {
