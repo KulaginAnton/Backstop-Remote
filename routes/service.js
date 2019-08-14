@@ -16,6 +16,7 @@ router.get('/', function (req, res, next) {
         backstopDef;
 
     processState.setState(true);
+    console.log(filterVal)
     backstopDef = backstop(method, {
         filter: filterVal,
         config:configHelper.getFilteredConfig()

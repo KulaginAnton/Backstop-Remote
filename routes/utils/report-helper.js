@@ -7,24 +7,24 @@ var IS_DEBUG = false,
     REPORT_PATH = "test-result.js",
     TEST_RESULT_PATH = "backstop_data/html_report/config.js";
 
-var Report = function() {};
+var Report = function () { };
 
-var log = function(msg) {
+var log = function (msg) {
     IS_DEBUG && console.log(util.inspect(msg, false, null));
 }
 
 //TODO add checking for type of str
-Report.prototype.makeJSON = function(str) {
-        var report = str.replace(/^report\(/gm, '').replace(/\);$/gm, '');
-        //report=report.length?report:"{}";
-        return JSON.parse(report);
-    }
-    //return str to JSONP with 'report function'
-Report.prototype.makeJSONP = function(str) {
-        return /^report/.test(str) ? str : 'report(' + str + ');';
-    }
-    //return latest test result in JSON format */
-Report.prototype.getResultTest = function(path) {
+Report.prototype.makeJSON = function (str) {
+    var report = str.replace(/^report\(/gm, '').replace(/\);$/gm, '');
+    //report=report.length?report:"{}";
+    return JSON.parse(report);
+}
+//return str to JSONP with 'report function'
+Report.prototype.makeJSONP = function (str) {
+    return /^report/.test(str) ? str : 'report(' + str + ');';
+}
+//return latest test result in JSON format */
+Report.prototype.getResultTest = function (path) {
     var path = path || REPORT_PATH,
         response = 'report({});';
     if (fs.existsSync(path)) {
@@ -32,32 +32,32 @@ Report.prototype.getResultTest = function(path) {
     }
     return this.makeJSON(response);
 }
-var isReportExist = function() {
-        return fs.existsSync(REPORT_PATH);
-    }
-    // save JSON as JSONP to report file
-Report.prototype.saveReport = function(json) {
+var isReportExist = function () {
+    return fs.existsSync(REPORT_PATH);
+}
+// save JSON as JSONP to report file
+Report.prototype.saveReport = function (json) {
     return fs.writeFileSync(REPORT_PATH, this.makeJSONP(JSON.stringify(json, null, 6)), 'utf8')
 }
 
-Report.prototype.getAllScenarious = function(scenArray) {
-    return scenArray.map(function(test) {
+Report.prototype.getAllScenarious = function (scenArray) {
+    return scenArray.map(function (test) {
         return test.label
     })
 }
-Report.prototype.getAllApplicableTest = function(rootTest) {
+Report.prototype.getAllApplicableTest = function (rootTest) {
     var configuration = JSON.parse(configHelper.getConfiguration());
     var allScenarious = this.getAllScenarious(configuration.scenarios);
     log('rootTest->' + rootTest);
     log('rootTest.test->' + rootTest.test);
-    return rootTest.tests.filter(function(value) {
+    return rootTest.tests.filter(function (value) {
         log('value = ' + value.pair.label)
         return allScenarious.indexOf(value.pair.label) > -1;
     })
 }
 
-Report.prototype.filterTestPairs = function(testPairs, filter) {
-    return testPairs.filter(function(value) {
+Report.prototype.filterTestPairs = function (testPairs, filter) {
+    return testPairs.filter(function (value) {
         log('filter 1 ->' + value.pair.label);
         log('filter 1 ->' + filter.label);
         log('filter 2 ->' + value.pair.reference);
@@ -65,10 +65,10 @@ Report.prototype.filterTestPairs = function(testPairs, filter) {
         return value.pair.label == filter.label && value.pair.reference == filter.reference;
     })
 }
-Report.prototype.updateCustomReport = function(tests, latestRes) {
+Report.prototype.updateCustomReport = function (tests, latestRes) {
     var _this = this;
     var isUpdated = false;
-    tests.forEach(function(currentValue, index, array) {
+    tests.forEach(function (currentValue, index, array) {
         let updatedTest = _this.filterTestPairs(latestRes.tests, {
             label: currentValue.pair.label,
             reference: currentValue.pair.reference
@@ -86,40 +86,49 @@ Report.prototype.updateCustomReport = function(tests, latestRes) {
 }
 
 
-Report.prototype.copyResult = function() {
-    var latestRes = this.getResultTest(TEST_RESULT_PATH);
+Report.prototype.copyResult = function (allTestStarts) {
+    var latestRes = this.getResultTest(),
+        _allTests = allTestStarts ? allTestStarts : false;
+    resultTest = this.getResultTest(TEST_RESULT_PATH);
+    if (_allTests) {
+        resultTest["allTestsDate"] = new Date().toString();
+    } else {
+        resultTest["partialTest"] = new Date().toString();
+    }
+    resultTest["partialTest"] = latestRes['partialTest']? latestRes['partialTest'] : '';
     log('copy-test = ' + latestRes);
-    this.saveReport(this.getResultTest(TEST_RESULT_PATH));
+
+    this.saveReport(resultTest);
 }
 
-Report.prototype.isTestRunnedBefore = function(testLabel) {
+Report.prototype.isTestRunnedBefore = function (testLabel) {
     var testLabel = testLabel,
         configuration = JSON.parse(configHelper.getConfiguration()),
         customReport = this.getResultTest(),
-        configurationLabels = configuration.scenarios.map(function(el) {
+        configurationLabels = configuration.scenarios.map(function (el) {
             return el.label
         });
     log(customReport)
-    if(typeof customReport.tests=="undefined"){
+    if (typeof customReport.tests == "undefined") {
         return false;
     }
-    return customReport.tests.some(function(element, index, array) {
+    return customReport.tests.some(function (element, index, array) {
         return element.pair.label.indexOf(testLabel) > -1
     })
 }
 
-Report.prototype.startUpdate = function(filter) {
+Report.prototype.startUpdate = function (filter) {
     if (isReportExist()) {
         var latestResult = this.getResultTest(TEST_RESULT_PATH),
             customReport = this.getResultTest();
         if (!this.isTestRunnedBefore(filter)) {
             log('latestResult-->' + latestResult);
-            if (customReport.tests){
+            if (customReport.tests) {
                 customReport.tests = customReport.tests.concat(latestResult.tests);
-            }else {
+            } else {
                 customReport.tests = latestResult.tests;
             }
-           
+
         } else {
             log('customReport-->' + customReport);
             var testList = this.getAllApplicableTest(customReport);
@@ -129,27 +138,28 @@ Report.prototype.startUpdate = function(filter) {
             log('----------|>' + updatedTestRes);
 
         }
+        customReport["partialTest"] = new Date().toString();
         this.saveReport(customReport);
 
     } else {
         this.copyResult();
     }
 }
-Report.prototype.updateResult = function(filter) {
+Report.prototype.updateResult = function (filter) {
     log('filterVal = ' + filter)
     if (filter) {
         this.startUpdate(filter);
     } else {
-        this.copyResult()
+        this.copyResult(true)
     }
 }
-Report.prototype.removeResultOfTest = function(scenarios) {
+Report.prototype.removeResultOfTest = function (scenarios) {
     var customReport = this.getResultTest();
-    var listLabelsNewScenarios = scenarios.map(function(elem, index, array) {
+    var listLabelsNewScenarios = scenarios.map(function (elem, index, array) {
         return elem.label
     })
     log(listLabelsNewScenarios);
-    var newTest = customReport.tests.filter(function(elem, index, array) {
+    var newTest = customReport.tests.filter(function (elem, index, array) {
         return listLabelsNewScenarios.indexOf(elem.pair.label) > -1
     })
     log(newTest);
