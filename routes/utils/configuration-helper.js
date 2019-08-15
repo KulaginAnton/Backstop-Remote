@@ -1,15 +1,15 @@
 var fs = require('fs');
 var util = require('util');
 
-var Configuration = function() {};
+var Configuration = function () { };
 
 var CONF_PATH = "backstop.json";
 
-var _typeof = function(elem) {
+var _typeof = function (elem) {
     return Object.prototype.toString.call(elem)
 }
 
-var makeSelectorsArray = function(selectors) {
+var makeSelectorsArray = function (selectors) {
     var res = selectors;
     if (_typeof(selectors) !== "[object Array]") {
         res = selectors.split(',');
@@ -17,43 +17,56 @@ var makeSelectorsArray = function(selectors) {
     return res;
 }
 
-var updateScenariosType = function(scenarios) {
-    scenarios.forEach(function(element, index, array) {
+var updateScenariosType = function (scenarios) {
+    scenarios.forEach(function (element, index, array) {
         array[index].selectors = makeSelectorsArray(array[index].selectors)
     }, this);
     return scenarios;
 }
-var filterActiveTest = function(testList){
-    return testList.filter((el,pos)=>{
+var filterActiveTest = function (testList) {
+    return testList.filter((el, pos) => {
         return el.status
     })
 }
+var filterScenariosByLabel = function (scenarios, label) {
+    return scenarios.find(function (element) {
+        return element.label === label;
+    });
+}
 
-Configuration.prototype.getConfiguration = function(path) {
+Configuration.prototype.getConfiguration = function (path) {
     var path = path || CONF_PATH;
     if (!fs.existsSync(path)) {
         throw new Error(`Configuration file ${path} doesn\`t exist`);
     }
     return fs.readFileSync(path, 'utf8');
 }
-Configuration.prototype.saveConfiguration = function(configuration, PATH_TO_FILE) {
+Configuration.prototype.saveConfiguration = function (configuration, PATH_TO_FILE) {
     var REPORT_PATH = PATH_TO_FILE || CONF_PATH;
     return fs.writeFileSync(REPORT_PATH, JSON.stringify(configuration, null, 6))
 }
-Configuration.prototype.updateScenarios = function(scenarios) {
+Configuration.prototype.updateScenarios = function (scenarios) {
     var path = path || CONF_PATH;
     var newConfig = JSON.parse(this.getConfiguration());
     newConfig.scenarios = updateScenariosType(scenarios);
     this.saveConfiguration(newConfig);
 }
-Configuration.prototype.updateViewPort = function(viewPort) {
+Configuration.prototype.updateViewPort = function (viewPort) {
     var path = path || CONF_PATH;
     var newConfig = JSON.parse(this.getConfiguration());
     newConfig.viewports = viewPort;
     this.saveConfiguration(newConfig);
 }
 
-Configuration.prototype.getFilteredConfig = function() {
+Configuration.prototype.getFilterByLabel = function (label, path) {
+    var path = path || CONF_PATH;
+    var config = JSON.parse(this.getConfiguration());
+    config.scenarios = filterScenariosByLabel(config.scenarios,label)
+    return JSON.stringify(config);
+}
+
+
+Configuration.prototype.getFilteredConfig = function () {
     var path = path || CONF_PATH;
     var config = JSON.parse(this.getConfiguration());
     config.scenarios = filterActiveTest(config.scenarios)
