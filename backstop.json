@@ -20,7 +20,7 @@
                   "referenceUrl": "",
                   "readyEvent": "",
                   "readySelector": "",
-                  "delay": "",
+                  "delay": null,
                   "hideSelectors": [],
                   "removeSelectors": [],
                   "onReadyScript": "chromy/onReady.js",
@@ -28,7 +28,9 @@
                   "clickSelector": "",
                   "postInteractionWait": "",
                   "selectorExpansion": "",
-                  "requireSameDimensions": ""
+                  "requireSameDimensions": "",
+                  "comment": "",
+                  "status": true
             },
             {
                   "label": "Wiki-Home-Footer",
@@ -42,7 +44,7 @@
                   "referenceUrl": "",
                   "readyEvent": "",
                   "readySelector": "",
-                  "delay": "",
+                  "delay": null,
                   "hideSelectors": [],
                   "removeSelectors": [],
                   "onReadyScript": "chromy/onReady.js",
@@ -50,7 +52,9 @@
                   "clickSelector": "",
                   "postInteractionWait": "",
                   "selectorExpansion": "",
-                  "requireSameDimensions": ""
+                  "requireSameDimensions": "",
+                  "comment": "",
+                  "status": true
             },
             {
                   "label": "Wiki-Home-Input",
@@ -64,7 +68,7 @@
                   "referenceUrl": "",
                   "readyEvent": "",
                   "readySelector": "",
-                  "delay": "",
+                  "delay": null,
                   "hideSelectors": [],
                   "removeSelectors": [],
                   "onReadyScript": "chromy/input.js",
@@ -72,7 +76,9 @@
                   "clickSelector": "#searchInput{:}Developer,#search-form button",
                   "postInteractionWait": "",
                   "selectorExpansion": "",
-                  "requireSameDimensions": ""
+                  "requireSameDimensions": "",
+                  "comment": "",
+                  "status": true
             }
       ],
       "paths": {

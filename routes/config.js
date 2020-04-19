@@ -20,7 +20,20 @@ router.get('/', function(req, res, next) {
     }
 });
 
-
+router.get('/:testLabel', function(req, res, next) {
+    var config,
+        status = 200;
+    try {
+        config = configHelper.getFilterByLabel(req.params.testLabel);
+    } catch (e) {
+        config = { 'error': e.message }
+        status = 208
+    } finally {
+        return res
+            .status(status)
+            .send(JSON.parse(config));
+    }
+});
 
 /* POST users listing. */
 router.post('/', function(req, res, next) {
