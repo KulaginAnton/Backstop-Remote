@@ -3,26 +3,43 @@ report({
       "tests": [
             {
                   "pair": {
-                        "reference": "..\\bitmaps_reference\\WikiTests_Wiki-Home_0_document_0_desktop.png",
-                        "test": "..\\bitmaps_test\\20180202\\WikiTests_Wiki-Home_0_document_0_desktop.png",
+                        "reference": "..\\bitmaps_reference\\backstop_default_Wiki-Home_0_document_0_desktop.png",
+                        "test": "..\\bitmaps_test\\20211103\\backstop_default_Wiki-Home_0_document_0_desktop.png",
                         "selector": "document",
-                        "fileName": "WikiTests_Wiki-Home_0_document_0_desktop.png",
+                        "fileName": "backstop_default_Wiki-Home_0_document_0_desktop.png",
                         "label": "Wiki-Home",
-                        "requireSameDimensions": "",
-                        "misMatchThreshold": "0.1",
-                        "error": "Reference file not found C:\\work\\test-tool\\service-server\\backstop_data\\bitmaps_reference\\WikiTests_Wiki-Home_0_document_0_desktop.png"
+                        "requireSameDimensions": true,
+                        "misMatchThreshold": 0.1,
+                        "url": "https://www.wikipedia.org/",
+                        "referenceUrl": "",
+                        "expect": 0,
+                        "viewportLabel": "desktop",
+                        "diff": {
+                              "isSameDimensions": true,
+                              "dimensionDifference": {
+                                    "width": 0,
+                                    "height": 0
+                              },
+                              "rawMisMatchPercentage": 0.011091820987654322,
+                              "misMatchPercentage": "0.01",
+                              "analysisTime": 35
+                        }
                   },
-                  "status": "fail"
+                  "status": "pass"
             },
             {
                   "pair": {
-                        "reference": "..\\bitmaps_reference\\WikiTests_Wiki-Home-Footer_0_footer_0_desktop.png",
-                        "test": "..\\bitmaps_test\\20180202\\WikiTests_Wiki-Home-Footer_0_footer_0_desktop.png",
-                        "selector": ".footer",
-                        "fileName": "WikiTests_Wiki-Home-Footer_0_footer_0_desktop.png",
-                        "label": "Wiki-Home-Footer",
-                        "requireSameDimensions": "",
-                        "misMatchThreshold": "0.1",
+                        "reference": "..\\bitmaps_reference\\backstop_default_Wiki-Home_0_document_1_tablet.png",
+                        "test": "..\\bitmaps_test\\20211103\\backstop_default_Wiki-Home_0_document_1_tablet.png",
+                        "selector": "document",
+                        "fileName": "backstop_default_Wiki-Home_0_document_1_tablet.png",
+                        "label": "Wiki-Home",
+                        "requireSameDimensions": true,
+                        "misMatchThreshold": 0.1,
+                        "url": "https://www.wikipedia.org/",
+                        "referenceUrl": "",
+                        "expect": 0,
+                        "viewportLabel": "tablet",
                         "diff": {
                               "isSameDimensions": true,
                               "dimensionDifference": {
@@ -36,16 +53,52 @@ report({
             },
             {
                   "pair": {
-                        "reference": "..\\bitmaps_reference\\WikiTests_Wiki-Home-Input_0_document_0_desktop.png",
-                        "test": "..\\bitmaps_test\\20180202\\WikiTests_Wiki-Home-Input_0_document_0_desktop.png",
-                        "selector": "document",
-                        "fileName": "WikiTests_Wiki-Home-Input_0_document_0_desktop.png",
-                        "label": "Wiki-Home-Input",
-                        "requireSameDimensions": "",
-                        "misMatchThreshold": "0.1",
-                        "error": "Reference file not found C:\\work\\test-tool\\service-server\\backstop_data\\bitmaps_reference\\WikiTests_Wiki-Home-Input_0_document_0_desktop.png"
+                        "reference": "..\\bitmaps_reference\\backstop_default_Wiki-Home-Footer_0_footer_0_desktop.png",
+                        "test": "..\\bitmaps_test\\20211103\\backstop_default_Wiki-Home-Footer_0_footer_0_desktop.png",
+                        "selector": ".footer",
+                        "fileName": "backstop_default_Wiki-Home-Footer_0_footer_0_desktop.png",
+                        "label": "Wiki-Home-Footer",
+                        "requireSameDimensions": true,
+                        "misMatchThreshold": 0.1,
+                        "url": "https://www.wikipedia.org/",
+                        "referenceUrl": "",
+                        "expect": 0,
+                        "viewportLabel": "desktop",
+                        "diff": {
+                              "isSameDimensions": true,
+                              "dimensionDifference": {
+                                    "width": 0,
+                                    "height": 0
+                              },
+                              "misMatchPercentage": "0.00"
+                        }
                   },
-                  "status": "fail"
+                  "status": "pass"
+            },
+            {
+                  "pair": {
+                        "reference": "..\\bitmaps_reference\\backstop_default_Wiki-Home-Footer_0_footer_1_tablet.png",
+                        "test": "..\\bitmaps_test\\20211103\\backstop_default_Wiki-Home-Footer_0_footer_1_tablet.png",
+                        "selector": ".footer",
+                        "fileName": "backstop_default_Wiki-Home-Footer_0_footer_1_tablet.png",
+                        "label": "Wiki-Home-Footer",
+                        "requireSameDimensions": true,
+                        "misMatchThreshold": 0.1,
+                        "url": "https://www.wikipedia.org/",
+                        "referenceUrl": "",
+                        "expect": 0,
+                        "viewportLabel": "tablet",
+                        "diff": {
+                              "isSameDimensions": true,
+                              "dimensionDifference": {
+                                    "width": 0,
+                                    "height": 0
+                              },
+                              "misMatchPercentage": "0.00"
+                        }
+                  },
+                  "status": "pass"
             }
-      ]
+      ],
+      "id": "backstop_default"
 });

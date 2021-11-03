@@ -1,4 +1,6 @@
-backstop_data/
+backstop_data/bitmaps*
+backstop_data/reports
+backstop_data/html_report
 node_modules/
 /test-result.js
 /package-lock.json

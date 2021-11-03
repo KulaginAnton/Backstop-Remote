@@ -1,82 +1,61 @@
 {
-      "id": "Wiki Tests",
+      "id": "backstop_default",
       "viewports": [
             {
                   "label": "desktop",
                   "width": 1920,
                   "height": 1080
+            },
+            {
+                  "label": "tablet",
+                  "width": 1024,
+                  "height": 768
             }
       ],
+      "onBeforeScript": "puppet/onBefore.js",
+      "onReadyScript": "puppet/onReady.js",
       "scenarios": [
             {
                   "label": "Wiki-Home",
                   "url": "https://www.wikipedia.org/",
-                  "selectors": [
-                        "document"
-                  ],
-                  "misMatchThreshold": "0.1",
-                  "onBeforeScript": "chromy/onBefore.js",
-                  "cookiePath": "",
+                  "cookiePath": "backstop_data/engine_scripts/cookies.json",
                   "referenceUrl": "",
                   "readyEvent": "",
                   "readySelector": "",
-                  "delay": null,
+                  "delay": 0,
                   "hideSelectors": [],
                   "removeSelectors": [],
-                  "onReadyScript": "chromy/onReady.js",
                   "hoverSelector": "",
-                  "clickSelector": "",
-                  "postInteractionWait": "",
-                  "selectorExpansion": "",
-                  "requireSameDimensions": "",
+                  "clickSelector": "#searchInput{:}Alabama,.pure-button-primary-progressive",
+                  "postInteractionWait": 1000,
+                  "selectors": [
+                        "document"
+                  ],
+                  "selectorExpansion": true,
+                  "misMatchThreshold": 0.1,
+                  "requireSameDimensions": true,
                   "comment": "",
                   "status": true
             },
             {
                   "label": "Wiki-Home-Footer",
                   "url": "https://www.wikipedia.org/",
+                  "cookiePath": "backstop_data/engine_scripts/cookies.json",
+                  "referenceUrl": "",
+                  "readyEvent": "",
+                  "readySelector": "",
+                  "delay": 1000,
+                  "hideSelectors": [],
+                  "removeSelectors": [],
+                  "hoverSelector": "",
+                  "clickSelector": "",
+                  "postInteractionWait": 0,
                   "selectors": [
                         ".footer"
                   ],
-                  "misMatchThreshold": "0.1",
-                  "onBeforeScript": "chromy/onBefore.js",
-                  "cookiePath": "",
-                  "referenceUrl": "",
-                  "readyEvent": "",
-                  "readySelector": "",
-                  "delay": null,
-                  "hideSelectors": [],
-                  "removeSelectors": [],
-                  "onReadyScript": "chromy/onReady.js",
-                  "hoverSelector": "",
-                  "clickSelector": "",
-                  "postInteractionWait": "",
-                  "selectorExpansion": "",
-                  "requireSameDimensions": "",
-                  "comment": "",
-                  "status": true
-            },
-            {
-                  "label": "Wiki-Home-Input",
-                  "url": "https://www.wikipedia.org/",
-                  "selectors": [
-                        "document"
-                  ],
-                  "misMatchThreshold": "0.1",
-                  "onBeforeScript": "chromy/onBefore.js",
-                  "cookiePath": "",
-                  "referenceUrl": "",
-                  "readyEvent": "",
-                  "readySelector": "",
-                  "delay": null,
-                  "hideSelectors": [],
-                  "removeSelectors": [],
-                  "onReadyScript": "chromy/input.js",
-                  "hoverSelector": "",
-                  "clickSelector": "#searchInput{:}Developer,#search-form button",
-                  "postInteractionWait": "",
-                  "selectorExpansion": "",
-                  "requireSameDimensions": "",
+                  "selectorExpansion": true,
+                  "misMatchThreshold": 0.1,
+                  "requireSameDimensions": true,
                   "comment": "",
                   "status": true
             }
@@ -89,16 +68,15 @@
             "ci_report": "backstop_data/ci_report"
       },
       "report": [],
-      "engine": "chrome",
+      "engine": "puppet",
       "engineOptions": {
-            "waitTimeout": 1500,
-            "chromeFlags": [
-                  "--disable-gpu",
-                  "--force-device-scale-factor=1"
+            "args": [
+                  "--no-sandbox"
             ]
       },
       "debug": false,
-      "asyncCaptureLimit": 2,
-      "asyncCompareLimit": 8,
-      "debugWindow": false
+      "asyncCaptureLimit": 10,
+      "asyncCompareLimit": 40,
+      "debugWindow": false,
+      "archiveReport": false
 }
